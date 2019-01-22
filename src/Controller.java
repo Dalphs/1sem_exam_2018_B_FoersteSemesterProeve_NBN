@@ -24,15 +24,12 @@ public class Controller {
         //Her initialiseres stien efter hvad der bliver skrevet i textfeltet
         String path = textField.getText();
 
-        //Her laver jeg et fil objekt der indeholder stien
-        File folder = new File(path);
-
         //Her laver jeg et fil array med filerne fra den valgte sti
-        File[] filesFromPath = folder.listFiles();
+        File[] filesFromPath = Main.readMediaFolder(path);
 
         //Her køerer jeg et for each loop der kører gennem alle filerne
         for (File file : filesFromPath) {
-            if (folder.isFile()) {
+            if (file.isFile()) {
                 textArea.appendText(file.getName() + "\n");
             }
         }
